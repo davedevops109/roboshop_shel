@@ -3,7 +3,7 @@
 ##### Change these values ###
 ZONE_ID="Z03010752AFABDTOSLK9H"
 DOMAIN="davedevops.tech"
-SG_NAME="allow-all"
+SG_NAME="Allow-all"
 env=dev
 #############################
 
