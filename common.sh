@@ -37,7 +37,7 @@ nodejs() {
   status_check
 
   print_head "downloading app content"
-  curl -L -o /tmp/$(component).zip https://roboshop-artifacts.s3.amazonaws.com/$(component).zip &>>${LOG}
+  curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${LOG}
   status_check
 
   print_head "cleanup old content"
@@ -46,7 +46,7 @@ nodejs() {
 
   print_head "extracting app content"
   cd /app
-  unzip /tmp/$(component).zip &>>${LOG}
+  unzip /tmp/${component}.zip &>>${LOG}
   status_check
 
   print_head "installing nodejs dependencies"
@@ -54,16 +54,16 @@ nodejs() {
   npm install &>>${LOG}
   status_check
 
-  print_head "configuring $(component) service"
-  cp ${script_location}/file/$(component).service /etc/systemd/system/$(component).service &>>${LOG}
+  print_head "configuring ${component} service"
+  cp ${script_location}/file/${component}.service /etc/systemd/system/${component}.service &>>${LOG}
   status_check
 
   print_head "reload system"
   systemctl daemon-reload &>>${LOG}
   status_check
 
-  print_head "enable $(component) service"
-  systemctl enable $(component) &>>${LOG}
+  print_head "enable ${component} service"
+  systemctl enable ${component} &>>${LOG}
   status_check
 
   print_head "start user service"
@@ -79,6 +79,6 @@ nodejs() {
   status_check
 
   print_head "load schema"
-  mongo --host mongodb-dev.davedevops.tech </app/schema/$(component).js &>>${LOG}
+  mongo --host mongodb-dev.davedevops.tech </app/schema/${component}.js &>>${LOG}
   status_check
 }
