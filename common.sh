@@ -116,11 +116,11 @@ MAVEN() {
   APP_PREREQ
 
   print_head "Build a package"
-  mvn clean package
+  mvn clean package &>>${LOG}
   status_check
 
   print_head "copy app file to app location"
-  mv target/${component}-1.0.jar {component}.jar
+  mv target/${component}-1.0.jar ${component}.jar
   status_check
 
   SYSTEMD_SETUP
