@@ -15,7 +15,7 @@ print_head() {
   echo -e "\e[1m $1 \e[0m"
 }
 
-nodejs() {
+NODEJS() {
   source common.sh
 
   print_head -e "configuring nodejs repos"
@@ -66,8 +66,8 @@ nodejs() {
   systemctl enable ${component} &>>${LOG}
   status_check
 
-  print_head "start user service"
-  systemctl start user &>>${LOG}
+  print_head "start ${component} service"
+  systemctl start ${component} &>>${LOG}
   status_check
 
   print_head "configuring mongo repo"
