@@ -1,10 +1,10 @@
 source common.sh
 
-print_head -e "copy mongodb repo file"
+print_head "copy mongodb repo file"
 cp ${script_location}/file/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>${LOG}
 status_check
 
-print_head -e "Install mongodb"
+print_head "Install mongodb"
 yum install mongodb-org -y &>>${LOG}
 status_check
 
