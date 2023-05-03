@@ -71,7 +71,7 @@ LOAD_SCHEMA() {
     print_head "load schema"
     mongo --host mongodb-dev.davedevops.tech </app/schema/${component}.js &>>${LOG}
     status_check
-    fi
+      fi
 
     if [ ${schema_load} == "mysql" ]; then
 
@@ -82,7 +82,7 @@ LOAD_SCHEMA() {
        print_head "load schema"
        mysql -h mysql-dev.davedevops.tech -uroot -p${root_mysql_password} < /app/schema/shipping.sql
        status_check
-     fi ];
+     fi
 
     fi
 
