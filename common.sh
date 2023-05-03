@@ -73,10 +73,10 @@ LOAD_SCHEMA() {
     status_check
       fi
 
-    if [ ${schema_load} == "mysql" ]; then
+    if [ ${schema_type} == "mysql" ]; then
 
-       print_head "install mongo client"
-       yum install mongodb-org-shell -y &>>${LOG}mongodb.sh
+       print_head "install mysql client"
+       yum install mysql -y &>>${LOG}
        status_check
 
        print_head "load schema"
