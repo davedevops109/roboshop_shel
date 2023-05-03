@@ -18,7 +18,7 @@ print_head() {
 NODEJS() {
   source common.sh
 
-  print_head -e "configuring nodejs repos"
+  print_head "configuring nodejs repos"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${LOG}
   status_check
 
@@ -26,7 +26,7 @@ NODEJS() {
   yum install nodejs -y &>>${LOG}
   status_check
 
-  print_head -e "Add application user"
+  print_head "Add application user"
   id roboshop &>>${LOG}
   if [ $? -ne 0 ]; then
     useradd roboshop &>>${LOG}
@@ -70,6 +70,7 @@ NODEJS() {
   systemctl start ${component} &>>${LOG}
   status_check
 
+  if [ ${schema_load} == "true" ]; then
   print_head "configuring mongo repo"
   cp ${script_location}/file/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>${LOG}
   status_check
@@ -81,4 +82,5 @@ NODEJS() {
   print_head "load schema"
   mongo --host mongodb-dev.davedevops.tech </app/schema/${component}.js &>>${LOG}
   status_check
+  fi
 }
