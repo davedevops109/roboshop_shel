@@ -18,11 +18,11 @@ yum install mysql-community-server -y &>>${LOG}
 status_check
 
 print_head "Install mysql"
-systemctl enable mysql &>>${LOG}
+systemctl enable mysqld &>>${LOG}
 status_check
 
 print_head "Install mysql"
-systemctl restart mysql &>>${LOG}
+systemctl restart mysqld &>>${LOG}
 status_check
 
 print_head "Reset database password"
