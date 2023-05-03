@@ -76,7 +76,7 @@ NODEJS() {
   status_check
 
   print_head "install mongo client"
-  yum install mongodb-org-shell -y &>>${LOG}
+  yum install mongodb-org-shell -y &>>${LOG}mongodb.sh
   status_check
 
   print_head "load schema"
