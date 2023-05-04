@@ -130,14 +130,14 @@ MAVEN() {
 
 PYTHON() {
    print_head "Install python"
-    yum install python36 gcc python3-devel -y
+    yum install python36 gcc python3-devel -y &>>${LOG}
     status_check
 
     APP_PREREQ
 
     print_head "Download dependencies"
     cd /app
-    pip3.6 install -r requirements.txt
+    pip3.6 install -r requirements.txt &>>${LOG}
     status_check
 
     print_head "update passwords in service file"
