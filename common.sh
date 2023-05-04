@@ -141,7 +141,7 @@ PYTHON() {
     status_check
 
     print_head "update passwords in service file"
-    sed -i -e "s/roboshop_rabbitmq_password/${roboshop_rabbitmq_password}/" file/${component}.service &>>{LOG}
+    sed -i -e "s/roboshop_rabbitmq_password/${roboshop_rabbitmq_password}/" ${script_location}/file/${component}.service &>>{LOG}
     status_check
 
     SYSTEMD_SETUP
